@@ -1,0 +1,174 @@
+# general settings
+name: Enhancement_Multinex_LOL_v2_syn
+model_type: ImageCleanModel
+scale: 1
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 100
+use_amp: false
+
+# dataset and data loader settings
+datasets:
+  train:
+    name: TrainSet
+    type: Dataset_PairedImage
+    dataroot_gt: data/LOLv2/Synthetic/Train/Normal
+    dataroot_lq: data/LOLv2/Synthetic/Train/Low
+    geometric_augs: true
+
+    filename_tmpl: '{}'
+    io_backend:
+      type: disk
+
+    # data loader
+    use_shuffle: true
+    num_worker_per_gpu: 8
+    batch_size_per_gpu: 8
+
+    ### -------------Progressive training--------------------------
+    # mini_batch_sizes: [8,5,4,2,1,1]             # Batch size per gpu   
+    # iters: [46000,32000,24000,18000,18000,12000]
+    # gt_size: 384   # Max patch size for progressive training
+    # gt_sizes: [128,160,192,256,320,384]  # Patch sizes for progressive training.
+    # ### ------------------------------------------------------------
+
+    ### ------- Training on single fixed-patch size 128x128---------
+    mini_batch_sizes: [8]   
+    iters: [300000]
+    gt_size: 256   
+    gt_sizes: [256]
+    ### ------------------------------------------------------------
+
+    dataset_enlarge_ratio: 1
+    prefetch_mode: ~
+
+  val:
+    name: ValSet
+    type: Dataset_PairedImage
+    dataroot_gt: data/LOLv2/Synthetic/Test/Normal
+    dataroot_lq: data/LOLv2/Synthetic/Test/Low
+    io_backend:
+      type: disk
+
+# network structures
+network_g:
+  type: Multinex
+
+  # --- I/O ---
+  in_ch: 3                    # input channels (default RGB)
+  out_ch: 3                   # output channels (default RGB)
+
+  # --- trunk width/depth (global budget knobs) ---
+  base_channels: 40           # base feature width before width multiplier
+  width_mult: 2.0             # channel scaling factor
+
+  # --- conv type ---
+  use_depthwise: true         # if true, depthwise separable conv blocks
+  act: ReLU                   # activation function class (string or callable)
+
+  # --- attention (per-branch projections & pooling scales) ---
+  per_illum_proj: false       # separate 1x1 per illum map (vs shared K->C)
+  per_chroma_proj: false       # separate 1x1 per chroma map (vs shared K->C)
+
+  use_illum_attn: true
+  use_chroma_attn: true
+  illum_mid: 3
+  chroma_mid: 3
+
+  # --- MSEF ---
+  reduction_ratio: 8
+
+  # --- heads & fusion ---
+  luma_head_act: null      # activation on 1-ch luminance ('sigmoid'|'relu'|null)
+  chroma_head_act: null       # activation on 3-ch chroma     ('tanh'|'sigmoid'|null)
+  retinex_residual: true      # add input residual after Retinex fusion
+  eps: 1.0e-9                 # numerical stability for divisions
+
+  # --- illumination maps (1-op transforms) ---
+  illum_flags:                # toggle which illum expressions to compute
+    mean: false                # (R+G+B)/3
+    rec709: true              # 0.2126R+0.7152G+0.0722B
+    vmax: true                # max(R,G,B)
+    lightness: true           # (max+min)/2
+    ycgco: false               # 0.25R+0.5G+0.25B
+    l2norm: true              # sqrt(R^2+G^2+B^2)
+
+  # --- chrominance maps (formula-based, cheap) ---
+  chroma_flags:
+    yuv_uv: false              # U,V from BT.601 YUV (no Y)
+    ycbcr_cbcr: true          # Cb,Cr from BT.601 YCbCr (no Y)
+    opponent: false            # O1=(R-G)/√2, O2=(R+G-2B)/√6
+    chroma_rg: true           # r=R/(R+G+B), g=G/(R+G+B)
+    hsv_s: true              # saturation S=1-min/max (set true if you want it)
+
+  # --- budget control ---
+  target_params: 45000        # if set (int), auto-shrink width_mult to fit budget
+
+
+
+
+# path
+path:
+  pretrain_network_g: ~
+  strict_load_g: true
+  resume_state: ~
+
+# training settings
+train:
+  total_iter: 150000
+  warmup_iter: -1 # no warm up
+  use_grad_clip: true
+
+  # Split 300k iterations into two cycles. 
+  # 1st cycle: fixed 3e-4 LR for 92k iters. 
+  # 2nd cycle: cosine annealing (3e-4 to 1e-6) for 208k iters.
+  scheduler:
+    type: CosineAnnealingRestartCyclicLR
+    periods: [46000, 104000]       
+    restart_weights: [1,1]
+    eta_mins: [0.0003,0.000001]   
+  
+  mixing_augs:
+    mixup: true
+    mixup_beta: 1.2
+    use_identity: true
+
+  optim_g:
+    type: Adam
+    lr: !!float 2e-4
+    # weight_decay: !!float 1e-4
+    betas: [0.9, 0.999]
+  
+  # losses
+  pixel_opt:
+    type: HybridLoss
+    loss_weight: 1
+    reduction: mean
+
+# validation settings
+val:
+  window_size: 4
+  val_freq: !!float 500
+  save_img: false
+  rgb2bgr: true
+  use_image: false
+  max_minibatch: 8
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+
+# logging settings
+logger:
+  print_freq: 500
+  save_checkpoint_freq: !!float 1000
+  use_tb_logger: true
+  wandb:
+    project: low_light
+    resume_id: ~
+
+# dist training settings
+dist_params:
+  backend: nccl
+  port: 29500
