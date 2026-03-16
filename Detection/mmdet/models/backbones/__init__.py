@@ -19,13 +19,12 @@ from .LLIE.denet import DeNet
 from .LLIE.penet import PeNet
 from .LLIE.EMV.EMV import EMV
 from .Multinex.Multinex import Multinex
-
-
-
+from .Multinex.MultinexNano import MultinexNano
+from .Multinex.MultinexMicro import MultinexMicro
 
 
 __all__ = [
     'RegNet', 'ResNet', 'ResNetV1d', 'ResNeXt', 'SSDVGG', 'HRNet',
     'MobileNetV2', 'Res2Net', 'HourglassNet', 'DetectoRS_ResNet',
     'DetectoRS_ResNeXt', 'Darknet', 'ResNeSt', 'TridentResNet', 'CSPDarknet', 
-    'IAT','DeNet','PeNet','EMV', 'Multinex']
+    'IAT','DeNet','PeNet','EMV', 'Multinex', 'MultinexMicro', 'MultinexNano']

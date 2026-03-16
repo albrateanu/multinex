@@ -40,7 +40,6 @@ from .IAT_detector.IAT_detr import IAT_DETR
 from .IAT_detector.IAT_yolo import IAT_YOLOV3
 from .ERE_yolo import EMV_YOLOV3
 from .LLIE_detector.llie_yolo import LLIE_YOLOV3
-from .yolo_Multinex import MultinexYOLO
 from .yolov3_Multinex import Multinex_YOLOV3
 __all__ = [
     'ATSS', 'BaseDetector', 'SingleStageDetector', 'TwoStageDetector', 'RPN',
@@ -51,5 +50,5 @@ __all__ = [
     'VFNet', 'DETR', 'TridentFasterRCNN', 'SparseRCNN', 'SCNet',
     'DeformableDETR', 'AutoAssign', 'YOLOF', 'CenterNet', 'YOLOX',
     'TwoStagePanopticSegmentor', 'PanopticFPN', 'IAT_DETR', 'IAT_YOLOV3','EMV_YOLOV3'
-    ,'LLIE_YOLOV3', 'MultinexYOLO', 'Multinex_YOLOV3'
+    ,'LLIE_YOLOV3', 'Multinex_YOLOV3'
 ]
