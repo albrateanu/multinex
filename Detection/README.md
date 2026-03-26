@@ -57,9 +57,6 @@ data/EXDark
 # Lightweight
 python tools/train.py configs/yolo/yolov3_Multinex_Exdark.py
 
-# Micro
-python tools/train.py configs/yolo/yolov3_MultinexMicro_Exdark.py
-
 # Nano
 python tools/train.py configs/yolo/yolov3_MultinexNano_Exdark.py
 ```
@@ -69,9 +66,6 @@ python tools/train.py configs/yolo/yolov3_MultinexNano_Exdark.py
 ```bash
 # Lightweight
 python tools/test.py configs/yolo/yolov3_Multinex_Exdark.py work_dirs/yolov3_Multinex_Exdark/MultinexYOLO.pth --eval mAP
-
-# # Micro
-python tools/test.py configs/yolo/yolov3_MultinexMicro_Exdark.py work_dirs/yolov3_MultinexMicro_Exdark/MultinexMicroYOLO.pth --eval mAP
 
 # Nano
 python tools/test.py configs/yolo/yolov3_MultinexNano_Exdark.py work_dirs/yolov3_MultinexNano_Exdark/MultinexNanoYOLO.pth --eval mAP
