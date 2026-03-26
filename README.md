@@ -327,38 +327,15 @@ tensorboard --logdir experiments
 
 ## 8. Model Complexity Utility
 
-If your repository includes the summary helper in `Enhancement/utils.py`, model complexity can be inspected as:
+Model complexity can be inspected as:
 
 ```python
-from utils import my_summary
-my_summary(model, 256, 256, 3, 1)
+python basicsr/complexity.py --opt Options/Multinex_LOL-v1.yaml --warmup 10 --runs 20 --resolutions 256x256 --device cuda
 ```
 
 Adjust the input size as needed.
 
-## 9. Common Issues
-
-### Dataset path errors
-
-Check that the folder names exactly match the paths in the YAML files.
-
-### Pair mismatch
-
-Make sure low-light and target images have identical filenames and aligned contents.
-
-### CUDA out of memory
-
-Reduce one or more of:
-- `batch_size_per_gpu`
-- patch size (`gt_size`)
-- worker count
-- model width or variant size
-
-### Wrong checkpoint loaded
-
-Ensure the checkpoint matches the option file and model variant being tested.
-
-## 10. Minimal Workflow
+## 9. Minimal Workflow
 
 ### Train
 
