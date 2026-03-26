@@ -1,6 +1,11 @@
+multinex_pkg
+
 # ignored folders
-/data
+data
+Detection/data
+Detection/weights
 experiments
+Detection/work_dirs
 results
 tb_logger
 wandb
