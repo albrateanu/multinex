@@ -352,3 +352,7 @@ python Enhancement/test_from_dataset.py \
   --weights pretrained_weights/Multinex_LOLv1.pth \
   --dataset LOL_v1
 ```
+
+## Acknowledgement:
+
+This codebase builds upon makes use of [RetinexFormer](https://github.com/caiyuanhao1998/retinexformer) and [IAT](https://github.com/cuiziteng/Illumination-Adaptive-Transformer/tree/main).
