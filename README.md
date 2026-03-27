@@ -18,20 +18,8 @@
 ### Introduction
 This repository contains the official implementation of **Multinex** for low-light image enhancement. It provides training and testing code for paired-image enhancement on standard benchmarks, together with pretrained checkpoints for direct evaluation.
 
-### Authors
-- Author A
-- Author B
-- Author C
-
-### Links
-- Paper: `LINK_TO_PAPER`
-- Project Page: `LINK_TO_PROJECT_PAGE`
-- Pretrained Models: `LINK_TO_MODELS`
-
 ### News
-- **2026.xx.xx :** Code, pretrained models, and training configs are released.
-- **2026.xx.xx :** Testing scripts for LOL-v1, LOL-v2-real, and LOL-v2-synthetic are available.
-- **2026.xx.xx :** Nano model configs and checkpoints are added.
+<!-- - **2026.xx.xx :** placeholder-->
 
 ## 1. Create Environment
 
