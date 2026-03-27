@@ -3,7 +3,7 @@
 <div align="center">
 <p align="center"> <img src="figure/logo.png" width="200px"> </p>
 
-# Multinex: Lightweight Low-Light Image Enhancement
+# Multinex: Lightweight Low-Light Image Enhancement via Multi-prior Retinex
 
 **Alexandru Brateanu, Tingting Mu, Codruta O. Ancuti, Cosmin Ancuti**
 
