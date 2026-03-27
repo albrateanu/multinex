@@ -1,54 +1,43 @@
 &nbsp;
 
-# Multinex
+<div align="center">
+<p align="center"> <img src="figure/logo.png" width="200px"> </p>
 
-Lightweight low-light image enhancement codebase with paired-image training and evaluation pipelines.
+# Multinex: Lightweight Low-Light Image Enhancement
 
-This repository provides:
-- training and testing for paired low-light enhancement
-- support for LOL-v1, LOL-v2-real, and LOL-v2-synthetic
-- standard and Nano model variants
-- YAML-based experiment configuration
-- a PyTorch 2 environment setup
+**Alexandru Brateanu, Tingting Mu, Codruta O. Ancuti, Cosmin Ancuti**
 
-## Overview
+[![Paper](https://img.shields.io/badge/paper-arXiv-179bd3)](LINK_TO_PAPER)
+[![Project Page](https://img.shields.io/badge/project-page-179bd3)](LINK_TO_PROJECT_PAGE)
+[![Models](https://img.shields.io/badge/models-download-179bd3)](LINK_TO_MODELS)
 
-The enhancement pipeline is driven through YAML option files and the BasicSR training and evaluation entrypoints.
+&nbsp;
 
-Available enhancement configs:
-- `Options/Multinex_LOL-v1.yaml`
-- `Options/Multinex_LOL-v2-real.yaml`
-- `Options/Multinex_LOL-v2-syn.yaml`
-- `Options/MultinexNano_LOLv1.yaml`
-- `Options/MultinexNano_LOL-v2-real.yaml`
-- `Options/MultinexNano_LOL-v2-synthetic.yaml`
+</div>
 
-## Repository Layout
+### Introduction
+This repository contains the official implementation of **Multinex** for low-light image enhancement. It provides training and testing code for paired-image enhancement on standard benchmarks, together with pretrained checkpoints for direct evaluation.
 
-```text
-.
-├── Enhancement/
-│   ├── test_from_dataset.py
-│   ├── utils.py
-│   └── ...
-├── Options/
-│   ├── Multinex_LOL-v1.yaml
-│   ├── Multinex_LOL-v2-real.yaml
-│   ├── Multinex_LOL-v2-syn.yaml
-│   ├── MultinexNano_LOLv1.yaml
-│   ├── MultinexNano_LOL-v2-real.yaml
-│   └── MultinexNano_LOL-v2-synthetic.yaml
-├── basicsr/
-├── pretrained_weights/
-├── data/
-└── setup.py
-```
+### Authors
+- Author A
+- Author B
+- Author C
 
-## 1. Environment Setup
+### Links
+- Paper: `LINK_TO_PAPER`
+- Project Page: `LINK_TO_PROJECT_PAGE`
+- Pretrained Models: `LINK_TO_MODELS`
 
-This project is intended to run with a PyTorch 2 environment only.
+### News
+- **2026.xx.xx :** Code, pretrained models, and training configs are released.
+- **2026.xx.xx :** Testing scripts for LOL-v1, LOL-v2-real, and LOL-v2-synthetic are available.
+- **2026.xx.xx :** Nano model configs and checkpoints are added.
 
-### 1.1 Create environment
+## 1. Create Environment
+
+We use a PyTorch 2 environment.
+
+### 1.1 Create the environment
 
 ```bash
 conda create -n multinex python=3.9 -y
@@ -57,28 +46,38 @@ conda activate multinex
 
 ### 1.2 Install PyTorch 2
 
-Install the PyTorch build matching your CUDA version. Example for CUDA 11.8:
+Example for CUDA 11.8:
 
 ```bash
 conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
 ```
 
-### 1.3 Install Python dependencies
+### 1.3 Install dependencies
 
 ```bash
 pip install matplotlib scikit-learn scikit-image opencv-python yacs joblib natsort h5py tqdm tensorboard
 pip install einops gdown addict future lmdb numpy pyyaml requests scipy yapf lpips thop timm
 ```
 
-### 1.4 Install the repository
+### 1.4 Install BasicSR
 
 ```bash
 python setup.py develop --no_cuda_ext
 ```
 
-## 2. Dataset Preparation
+&nbsp;
 
-The current configs expect the following paired dataset structure under `data/`.
+## 2. Prepare Dataset
+
+The current release supports:
+- LOL-v1
+- LOL-v2-real
+- LOL-v2-synthetic
+
+Organize the datasets as follows:
+
+<details close>
+<summary><b>Dataset structure</b></summary>
 
 ```text
 data/
@@ -106,46 +105,27 @@ data/
             └── Normal/
 ```
 
-### Expected paths from the provided option files
+</details>
 
-#### LOL-v1
+The option files currently used in this repository are:
+- `Options/Multinex_LOL-v1.yaml`
+- `Options/Multinex_LOL-v2-real.yaml`
+- `Options/Multinex_LOL-v2-syn.yaml`
+- `Options/MultinexNano_LOLv1.yaml`
+- `Options/MultinexNano_LOL-v2-real.yaml`
+- `Options/MultinexNano_LOL-v2-synthetic.yaml`
 
-```text
-data/LOLv1/Train/input
-data/LOLv1/Train/target
-data/LOLv1/Test/input
-data/LOLv1/Test/target
-```
+&nbsp;
 
-#### LOL-v2-real
+## 3. Testing
 
-```text
-data/LOLv2/Real_captured/Train/Low
-data/LOLv2/Real_captured/Train/Normal
-data/LOLv2/Real_captured/Test/Low
-data/LOLv2/Real_captured/Test/Normal
-```
-
-#### LOL-v2-synthetic
-
-```text
-data/LOLv2/Synthetic/Train/Low
-data/LOLv2/Synthetic/Train/Normal
-data/LOLv2/Synthetic/Test/Low
-data/LOLv2/Synthetic/Test/Normal
-```
-
-Make sure filenames match between low-light and target images.
-
-## 3. Pretrained Weights
-
-Place pretrained checkpoints in:
+Download pretrained checkpoints and place them in:
 
 ```text
 pretrained_weights/
 ```
 
-Recommended naming:
+Recommended checkpoint names:
 
 ```text
 pretrained_weights/
@@ -157,202 +137,88 @@ pretrained_weights/
 └── MultinexNano_LOLv2_syn.pth
 ```
 
-## 4. Testing
-
 Activate the environment first:
 
 ```bash
 conda activate multinex
 ```
 
-### 4.1 Test standard models
-
-#### LOL-v1
+### Standard Multinex
 
 ```bash
-python Enhancement/test_from_dataset.py \
-  --opt Options/Multinex_LOL-v1.yaml \
-  --weights pretrained_weights/Multinex_LOLv1.pth \
-  --dataset LOL_v1
+# LOL-v1
+python Enhancement/test_from_dataset.py --opt Options/Multinex_LOL-v1.yaml --weights pretrained_weights/Multinex_LOLv1.pth --dataset LOL_v1
+
+# LOL-v2-real
+python Enhancement/test_from_dataset.py --opt Options/Multinex_LOL-v2-real.yaml --weights pretrained_weights/Multinex_LOLv2_real.pth --dataset LOL_v2_real
+
+# LOL-v2-synthetic
+python Enhancement/test_from_dataset.py --opt Options/Multinex_LOL-v2-syn.yaml --weights pretrained_weights/Multinex_LOLv2_syn.pth --dataset LOL_v2_synthetic
 ```
 
-#### LOL-v2-real
+### Multinex-Nano
 
 ```bash
-python Enhancement/test_from_dataset.py \
-  --opt Options/Multinex_LOL-v2-real.yaml \
-  --weights pretrained_weights/Multinex_LOLv2_real.pth \
-  --dataset LOL_v2_real
+# LOL-v1
+python Enhancement/test_from_dataset.py --opt Options/MultinexNano_LOLv1.yaml --weights pretrained_weights/MultinexNano_LOLv1.pth --dataset LOL_v1
+
+# LOL-v2-real
+python Enhancement/test_from_dataset.py --opt Options/MultinexNano_LOL-v2-real.yaml --weights pretrained_weights/MultinexNano_LOLv2_real.pth --dataset LOL_v2_real
+
+# LOL-v2-synthetic
+python Enhancement/test_from_dataset.py --opt Options/MultinexNano_LOL-v2-synthetic.yaml --weights pretrained_weights/MultinexNano_LOLv2_syn.pth --dataset LOL_v2_synthetic
 ```
 
-#### LOL-v2-synthetic
+- #### Self-ensemble testing strategy
+
+If supported by your testing script, add `--self_ensemble` to the command:
 
 ```bash
-python Enhancement/test_from_dataset.py \
-  --opt Options/Multinex_LOL-v2-syn.yaml \
-  --weights pretrained_weights/Multinex_LOLv2_syn.pth \
-  --dataset LOL_v2_synthetic
+python Enhancement/test_from_dataset.py --opt Options/Multinex_LOL-v1.yaml --weights pretrained_weights/Multinex_LOLv1.pth --dataset LOL_v1 --self_ensemble
 ```
 
-### 4.2 Test Nano models
+&nbsp;
 
-#### LOL-v1
-
-```bash
-python Enhancement/test_from_dataset.py \
-  --opt Options/MultinexNano_LOLv1.yaml \
-  --weights pretrained_weights/MultinexNano_LOLv1.pth \
-  --dataset LOL_v1
-```
-
-#### LOL-v2-real
-
-```bash
-python Enhancement/test_from_dataset.py \
-  --opt Options/MultinexNano_LOL-v2-real.yaml \
-  --weights pretrained_weights/MultinexNano_LOLv2_real.pth \
-  --dataset LOL_v2_real
-```
-
-#### LOL-v2-synthetic
-
-```bash
-python Enhancement/test_from_dataset.py \
-  --opt Options/MultinexNano_LOL-v2-synthetic.yaml \
-  --weights pretrained_weights/MultinexNano_LOLv2_syn.pth \
-  --dataset LOL_v2_synthetic
-```
-
-### 4.3 Optional self-ensemble testing
-
-If supported by your testing pipeline, append:
-
-```bash
---self_ensemble
-```
-
-Example:
-
-```bash
-python Enhancement/test_from_dataset.py \
-  --opt Options/Multinex_LOL-v1.yaml \
-  --weights pretrained_weights/Multinex_LOLv1.pth \
-  --dataset LOL_v1 \
-  --self_ensemble
-```
-
-## 5. Training
+## 4. Training
 
 Training is launched through the BasicSR entrypoint.
 
-### 5.1 Train standard models
-
-#### LOL-v1
-
 ```bash
+# activate the environment
+conda activate multinex
+
+# Multinex on LOL-v1
 python basicsr/train.py --opt Options/Multinex_LOL-v1.yaml
-```
 
-#### LOL-v2-real
-
-```bash
+# Multinex on LOL-v2-real
 python basicsr/train.py --opt Options/Multinex_LOL-v2-real.yaml
-```
 
-#### LOL-v2-synthetic
-
-```bash
+# Multinex on LOL-v2-synthetic
 python basicsr/train.py --opt Options/Multinex_LOL-v2-syn.yaml
-```
 
-### 5.2 Train Nano models
-
-#### LOL-v1
-
-```bash
+# Multinex-Nano on LOL-v1
 python basicsr/train.py --opt Options/MultinexNano_LOLv1.yaml
-```
 
-#### LOL-v2-real
-
-```bash
+# Multinex-Nano on LOL-v2-real
 python basicsr/train.py --opt Options/MultinexNano_LOL-v2-real.yaml
-```
 
-#### LOL-v2-synthetic
-
-```bash
+# Multinex-Nano on LOL-v2-synthetic
 python basicsr/train.py --opt Options/MultinexNano_LOL-v2-synthetic.yaml
 ```
 
-## 6. Notes on the YAML Configs
+&nbsp;
 
-A typical option file defines:
-- dataset paths
-- batch size and workers
-- validation settings
-- optimizer and scheduler
-- model architecture settings
-- checkpoint and logging behavior
+## 5. Notes
 
-Common fields to edit first:
-- `datasets.train.dataroot_gt`
-- `datasets.train.dataroot_lq`
-- `datasets.val.dataroot_gt`
-- `datasets.val.dataroot_lq`
-- `num_gpu`
-- `batch_size_per_gpu`
-- `train.total_iter`
-- `path.pretrain_network_g`
-- `logger.use_tb_logger`
+- Make sure the dataset paths in the YAML files match your local directory layout.
+- Make sure the checkpoint matches the corresponding option file.
+- If you encounter CUDA memory issues, reduce batch size or patch size in the YAML config.
+- Logs and checkpoints are controlled by the training config.
 
-## 7. Monitoring and Checkpoints
+### Optional TensorBoard
 
-Logs and checkpoints are written according to the YAML config.
-
-Useful fields:
-
-```yaml
-logger:
-  print_freq: 500
-  save_checkpoint_freq: 1000
-  use_tb_logger: true
-```
-
-If TensorBoard logging is enabled:
+If enabled in the config, you can monitor training with:
 
 ```bash
 tensorboard --logdir experiments
 ```
-
-## 8. Model Complexity Utility
-
-Model complexity can be inspected as:
-
-```python
-python basicsr/complexity.py --opt Options/Multinex_LOL-v1.yaml --warmup 10 --runs 20 --resolutions 256x256 --device cuda
-```
-
-Adjust the input size as needed.
-
-## 9. Minimal Workflow
-
-### Train
-
-```bash
-conda activate multinex
-python basicsr/train.py --opt Options/Multinex_LOL-v1.yaml
-```
-
-### Test
-
-```bash
-python Enhancement/test_from_dataset.py \
-  --opt Options/Multinex_LOL-v1.yaml \
-  --weights pretrained_weights/Multinex_LOLv1.pth \
-  --dataset LOL_v1
-```
-
-## Acknowledgement:
-
-This codebase builds upon makes use of [RetinexFormer](https://github.com/caiyuanhao1998/retinexformer) and [IAT](https://github.com/cuiziteng/Illumination-Adaptive-Transformer/tree/main).
