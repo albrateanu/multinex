@@ -1,7 +1,7 @@
 &nbsp;
 
 <div align="center">
-<p align="center"> <img src="figure/logo.png" width="200px"> </p>
+<p align="center"> <img src="assets/Multinex_logo.png" width="200px"> </p>
 
 # Multinex: Lightweight Low-Light Image Enhancement via Multi-prior Retinex
 
