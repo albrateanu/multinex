@@ -70,10 +70,11 @@ pip install -e .
 
 ## 2. Prepare Dataset
 
-The current release supports:
-- LOL-v1
-- LOL-v2-real
-- LOL-v2-synthetic
+Download the LOLv1 and LOLv2 datasets:
+
+LOLv1 - [Google Drive](https://drive.google.com/file/d/1vhJg75hIpYvsmryyaxdygAWeHuiY_HWu/view?usp=sharing)
+
+LOLv2 - [Google Drive](https://drive.google.com/file/d/1OMfP6Ks2QKJcru1wS2eP629PgvKqF2Tw/view?usp=sharing)
 
 Organize the datasets as follows:
 
@@ -107,14 +108,6 @@ data/
 ```
 
 </details>
-
-The option files currently used in this repository are:
-- `Options/Multinex_LOL-v1.yaml`
-- `Options/Multinex_LOL-v2-real.yaml`
-- `Options/Multinex_LOL-v2-syn.yaml`
-- `Options/MultinexNano_LOLv1.yaml`
-- `Options/MultinexNano_LOL-v2-real.yaml`
-- `Options/MultinexNano_LOL-v2-synthetic.yaml`
 
 &nbsp;
 
