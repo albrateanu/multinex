@@ -185,9 +185,6 @@ python Enhancement/test.py --opt Options/Multinex_LOL-v1.yaml --weights pretrain
 Training is launched through the BasicSR entrypoint.
 
 ```bash
-# activate the environment
-conda activate multinex
-
 # Multinex on LOL-v1
 python -m basicsr.train --opt Options/Multinex_LOL-v1.yaml
 
