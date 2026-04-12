@@ -113,7 +113,7 @@ data/
 
 ## 3. Testing
 
-Download pretrained checkpoints directory from [Google Drive](LINK_TO_WEIGHTS).
+Model weights are available under `pretrained_weights/`, and are contained within the repository, due to their small file sizes (280 KB for Multinex, 20 KB for Multinex-Nano). 
 
 ### Multinex
 
