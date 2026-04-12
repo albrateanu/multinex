@@ -44,8 +44,14 @@ conda activate multinex
 Example for CUDA 11.8:
 
 ```bash
+# With Pip
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+# With Conda
 conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
 ```
+
+Change this to accommodate your CUDA version requirements.
 
 ### 1.3 Install dependencies
 
