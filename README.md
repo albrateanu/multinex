@@ -63,7 +63,7 @@ pip install einops gdown addict future lmdb numpy pyyaml requests scipy yapf lpi
 ### 1.4 Install BasicSR
 
 ```bash
-python setup.py develop --no_cuda_ext
+pip install -e .
 ```
 
 &nbsp;
@@ -148,34 +148,34 @@ conda activate multinex
 
 ```bash
 # LOL-v1
-python Enhancement/test_from_dataset.py --opt Options/Multinex_LOL-v1.yaml --weights pretrained_weights/Multinex_LOLv1.pth --dataset LOL_v1
+python Enhancement/test.py --opt Options/Multinex_LOL-v1.yaml --weights pretrained_weights/Multinex_LOLv1.pth --dataset LOL_v1
 
 # LOL-v2-real
-python Enhancement/test_from_dataset.py --opt Options/Multinex_LOL-v2-real.yaml --weights pretrained_weights/Multinex_LOLv2_real.pth --dataset LOL_v2_real
+python Enhancement/test.py --opt Options/Multinex_LOL-v2-real.yaml --weights pretrained_weights/Multinex_LOLv2_real.pth --dataset LOL_v2_real
 
 # LOL-v2-synthetic
-python Enhancement/test_from_dataset.py --opt Options/Multinex_LOL-v2-syn.yaml --weights pretrained_weights/Multinex_LOLv2_syn.pth --dataset LOL_v2_synthetic
+python Enhancement/test.py --opt Options/Multinex_LOL-v2-syn.yaml --weights pretrained_weights/Multinex_LOLv2_syn.pth --dataset LOL_v2_synthetic
 ```
 
 ### Multinex-Nano
 
 ```bash
 # LOL-v1
-python Enhancement/test_from_dataset.py --opt Options/MultinexNano_LOLv1.yaml --weights pretrained_weights/MultinexNano_LOLv1.pth --dataset LOL_v1
+python Enhancement/test.py --opt Options/MultinexNano_LOLv1.yaml --weights pretrained_weights/MultinexNano_LOLv1.pth --dataset LOL_v1
 
 # LOL-v2-real
-python Enhancement/test_from_dataset.py --opt Options/MultinexNano_LOL-v2-real.yaml --weights pretrained_weights/MultinexNano_LOLv2_real.pth --dataset LOL_v2_real
+python Enhancement/test.py --opt Options/MultinexNano_LOL-v2-real.yaml --weights pretrained_weights/MultinexNano_LOLv2_real.pth --dataset LOL_v2_real
 
 # LOL-v2-synthetic
-python Enhancement/test_from_dataset.py --opt Options/MultinexNano_LOL-v2-synthetic.yaml --weights pretrained_weights/MultinexNano_LOLv2_syn.pth --dataset LOL_v2_synthetic
+python Enhancement/test.py --opt Options/MultinexNano_LOL-v2-synthetic.yaml --weights pretrained_weights/MultinexNano_LOLv2_syn.pth --dataset LOL_v2_synthetic
 ```
 
 - #### Self-ensemble testing strategy
 
-If supported by your testing script, add `--self_ensemble` to the command:
+For stronger results, add `--self_ensemble` argument.
 
 ```bash
-python Enhancement/test_from_dataset.py --opt Options/Multinex_LOL-v1.yaml --weights pretrained_weights/Multinex_LOLv1.pth --dataset LOL_v1 --self_ensemble
+python Enhancement/test.py --opt Options/Multinex_LOL-v1.yaml --weights pretrained_weights/Multinex_LOLv1.pth --dataset LOL_v1 --self_ensemble
 ```
 
 &nbsp;
@@ -189,22 +189,22 @@ Training is launched through the BasicSR entrypoint.
 conda activate multinex
 
 # Multinex on LOL-v1
-python basicsr/train.py --opt Options/Multinex_LOL-v1.yaml
+python -m basicsr.train --opt Options/Multinex_LOL-v1.yaml
 
 # Multinex on LOL-v2-real
-python basicsr/train.py --opt Options/Multinex_LOL-v2-real.yaml
+python -m basicsr.train --opt Options/Multinex_LOL-v2-real.yaml
 
 # Multinex on LOL-v2-synthetic
-python basicsr/train.py --opt Options/Multinex_LOL-v2-syn.yaml
+python -m basicsr.train --opt Options/Multinex_LOL-v2-syn.yaml
 
 # Multinex-Nano on LOL-v1
-python basicsr/train.py --opt Options/MultinexNano_LOLv1.yaml
+python -m basicsr.train --opt Options/MultinexNano_LOLv1.yaml
 
 # Multinex-Nano on LOL-v2-real
-python basicsr/train.py --opt Options/MultinexNano_LOL-v2-real.yaml
+python -m basicsr.train --opt Options/MultinexNano_LOL-v2-real.yaml
 
 # Multinex-Nano on LOL-v2-synthetic
-python basicsr/train.py --opt Options/MultinexNano_LOL-v2-synthetic.yaml
+python -m basicsr.train --opt Options/MultinexNano_LOL-v2-synthetic.yaml
 ```
 
 &nbsp;
