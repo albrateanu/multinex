@@ -63,7 +63,7 @@ pip install einops gdown addict future lmdb numpy pyyaml requests scipy yapf lpi
 ### 1.4 Install BasicSR
 
 ```bash
-python setup.py develop --no_cuda_ext
+pip install -e .
 ```
 
 &nbsp;
@@ -189,22 +189,22 @@ Training is launched through the BasicSR entrypoint.
 conda activate multinex
 
 # Multinex on LOL-v1
-python basicsr/train.py --opt Options/Multinex_LOL-v1.yaml
+python -m basicsr.train --opt Options/Multinex_LOL-v1.yaml
 
 # Multinex on LOL-v2-real
-python basicsr/train.py --opt Options/Multinex_LOL-v2-real.yaml
+python -m basicsr.train --opt Options/Multinex_LOL-v2-real.yaml
 
 # Multinex on LOL-v2-synthetic
-python basicsr/train.py --opt Options/Multinex_LOL-v2-syn.yaml
+python -m basicsr.train --opt Options/Multinex_LOL-v2-syn.yaml
 
 # Multinex-Nano on LOL-v1
-python basicsr/train.py --opt Options/MultinexNano_LOLv1.yaml
+python -m basicsr.train --opt Options/MultinexNano_LOLv1.yaml
 
 # Multinex-Nano on LOL-v2-real
-python basicsr/train.py --opt Options/MultinexNano_LOL-v2-real.yaml
+python -m basicsr.train --opt Options/MultinexNano_LOL-v2-real.yaml
 
 # Multinex-Nano on LOL-v2-synthetic
-python basicsr/train.py --opt Options/MultinexNano_LOL-v2-synthetic.yaml
+python -m basicsr.train --opt Options/MultinexNano_LOL-v2-synthetic.yaml
 ```
 
 &nbsp;
