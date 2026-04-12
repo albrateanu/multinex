@@ -30,7 +30,7 @@ This repository contains the official implementation of **Multinex** for low-lig
 **Please Note:** Installation and running instructions for Object Detection on ExDark are available under `Detection/README.md`.
 
 ## Results
-Quantitative results _Enhancement_ (LOL-v1, LOL-v2, MEF, DICM, LIME, NPE), and _Detection_ (ExDark)
+Quantitative results for _Enhancement_ (LOL-v1, LOL-v2, MEF, DICM, LIME, NPE), and _Detection_ (ExDark)
 
 <details>
 <summary><strong>LOL Datasets</strong> (click to expand) </summary>
