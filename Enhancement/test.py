@@ -112,7 +112,9 @@ except ImportError:
 opt = parse(args.opt, is_train=False)
 opt['dist'] = False
 
-x = yaml.load(open(args.opt, mode='r'), Loader=Loader)
+with open(args.opt, 'r', encoding='utf-8') as f:
+    x = yaml.load(f, Loader=Loader)
+
 s = x['network_g'].pop('type')
 
 model_restoration = create_model(opt).net_g
