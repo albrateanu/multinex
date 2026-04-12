@@ -38,7 +38,7 @@ def parse(opt_path, is_train=True):
     Returns:
         (dict): Options.
     """
-    with open(opt_path, mode='r') as f:
+    with open(opt_path, mode='r', encoding='utf-8') as f:
         Loader, _ = ordered_yaml()
         opt = yaml.load(f, Loader=Loader)
 

@@ -160,6 +160,8 @@ class SEBlock(nn.Module):
         return x * y
 
 
+# ---------- MSEF -------------
+
 class MSEFBlock(nn.Module):
     def __init__(self, ch, reduction_ratio=16):
         super(MSEFBlock, self).__init__()
