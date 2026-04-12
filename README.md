@@ -209,17 +209,16 @@ python -m basicsr.train --opt Options/MultinexNano_LOL-v2-synthetic.yaml
 
 &nbsp;
 
-## 5. Notes
+## 5. Citation
 
-- Make sure the dataset paths in the YAML files match your local directory layout.
-- Make sure the checkpoint matches the corresponding option file.
-- If you encounter CUDA memory issues, reduce batch size or patch size in the YAML config.
-- Logs and checkpoints are controlled by the training config.
+Cite our work if Multinex is useful to your research.
 
-### Optional TensorBoard
-
-If enabled in the config, you can monitor training with:
-
-```bash
-tensorboard --logdir experiments
 ```
+@inproceedings{multinex2026,
+  title     = {Multinex: Lightweight Low-light Image Enhancement via Multi-prior Retinex},
+  author    = {Alexandru Brateanu and Tingting Mu and Codruta O. Ancuti and Cosmin Ancuti},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2026}
+}
+```
+
