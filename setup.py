@@ -1,50 +1,39 @@
 #!/usr/bin/env python
 
 from setuptools import find_packages, setup
-
 import os
 import subprocess
 import sys
 import time
-import torch
-from torch.utils.cpp_extension import (BuildExtension, CppExtension,
-                                       CUDAExtension)
+from pathlib import Path
 
+# -------------------------
+# Version helpers
+# -------------------------
 version_file = 'basicsr/version.py'
 
-
 def readme():
-    return ''
-    # with open('README.md', encoding='utf-8') as f:
-    #     content = f.read()
-    # return content
+    return '' 
 
+def _minimal_ext_cmd(cmd):
+    env = {}
+    for k in ['SYSTEMROOT', 'PATH', 'HOME']:
+        v = os.environ.get(k)
+        if v is not None:
+            env[k] = v
+    env['LANGUAGE'] = 'C'
+    env['LANG'] = 'C'
+    env['LC_ALL'] = 'C'
+    out = subprocess.Popen(cmd, stdout=subprocess.PIPE, env=env).communicate()[0]
+    return out
 
 def get_git_hash():
-
-    def _minimal_ext_cmd(cmd):
-        # construct minimal environment
-        env = {}
-        for k in ['SYSTEMROOT', 'PATH', 'HOME']:
-            v = os.environ.get(k)
-            if v is not None:
-                env[k] = v
-        # LANGUAGE is used on win32
-        env['LANGUAGE'] = 'C'
-        env['LANG'] = 'C'
-        env['LC_ALL'] = 'C'
-        out = subprocess.Popen(
-            cmd, stdout=subprocess.PIPE, env=env).communicate()[0]
-        return out
-
     try:
         out = _minimal_ext_cmd(['git', 'rev-parse', 'HEAD'])
         sha = out.strip().decode('ascii')
     except OSError:
         sha = 'unknown'
-
     return sha
-
 
 def get_hash():
     if os.path.exists('.git'):
@@ -53,13 +42,11 @@ def get_hash():
         try:
             from basicsr.version import __version__
             sha = __version__.split('+')[-1]
-        except ImportError:
-            raise ImportError('Unable to get git version')
+        except Exception:
+            sha = 'unknown'
     else:
         sha = 'unknown'
-
     return sha
-
 
 def write_version_py():
     content = """# GENERATED VERSION FILE
@@ -75,25 +62,58 @@ version_info = ({})
         [x if x.isdigit() else f'"{x}"' for x in SHORT_VERSION.split('.')])
     VERSION = SHORT_VERSION + '+' + sha
 
-    version_file_str = content.format(time.asctime(), VERSION, SHORT_VERSION,
-                                      VERSION_INFO)
+    version_file_str = content.format(time.asctime(), VERSION, SHORT_VERSION, VERSION_INFO)
+    Path(version_file).parent.mkdir(parents=True, exist_ok=True)
     with open(version_file, 'w') as f:
         f.write(version_file_str)
-
 
 def get_version():
     with open(version_file, 'r') as f:
         exec(compile(f.read(), version_file, 'exec'))
     return locals()['__version__']
 
+# -------------------------
+# Extension helpers
+# -------------------------
+def want_cuda_ext():
+    """
+    Decide whether to even attempt building native extensions.
+    - Command-line: --no_cuda_ext disables
+    - Env: BASICSR_EXT in {1,true,yes} enables; {0,false,no} disables
+    Default: ENABLE (to mirror upstream), but you can set BASICSR_EXT=False to skip.
+    """
+    if '--no_cuda_ext' in sys.argv:
+        sys.argv.remove('--no_cuda_ext')
+        return False
 
-def make_cuda_ext(name, module, sources, sources_cuda=None):
-    if sources_cuda is None:
-        sources_cuda = []
+    val = os.getenv('BASICSR_EXT', None)
+    if val is None:
+        return True
+    return val.strip().lower() in {'1', 'true', 'yes', 'on'}
+
+def make_cuda_or_cpp_ext(name, module, sources, sources_cuda=None):
+    """
+    Creates either a CUDAExtension (if CUDA available) or a CppExtension fallback.
+    Import torch/cpp_extension lazily and only if we actually build extensions.
+    """
+    sources_cuda = sources_cuda or []
+
+    try:
+        import torch
+        from torch.utils.cpp_extension import (BuildExtension, CppExtension, CUDAExtension)
+    except Exception:
+        return None, None, None
+
     define_macros = []
     extra_compile_args = {'cxx': []}
 
-    if torch.cuda.is_available() or os.getenv('FORCE_CUDA', '0') == '1':
+    use_cuda = False
+    try:
+        use_cuda = torch.cuda.is_available() or os.getenv('FORCE_CUDA', '0') == '1'
+    except Exception:
+        use_cuda = False
+
+    if use_cuda:
         define_macros += [('WITH_CUDA', None)]
         extension = CUDAExtension
         extra_compile_args['nvcc'] = [
@@ -101,53 +121,64 @@ def make_cuda_ext(name, module, sources, sources_cuda=None):
             '-D__CUDA_NO_HALF_CONVERSIONS__',
             '-D__CUDA_NO_HALF2_OPERATORS__',
         ]
-        sources += sources_cuda
+        all_sources = sources + sources_cuda
     else:
-        print(f'Compiling {name} without CUDA')
+        # No CUDA at build time -> pure C++ fallback
         extension = CppExtension
+        all_sources = sources
 
-    return extension(
+    ext = extension(
         name=f'{module}.{name}',
-        sources=[os.path.join(*module.split('.'), p) for p in sources],
+        sources=[os.path.join(*module.split('.'), p) for p in all_sources],
         define_macros=define_macros,
-        extra_compile_args=extra_compile_args)
+        extra_compile_args=extra_compile_args
+    )
+    return ext, BuildExtension, extension
 
-
-def get_requirements(filename='requirements.txt'):
-    return []
-    here = os.path.dirname(os.path.realpath(__file__))
-    with open(os.path.join(here, filename), 'r') as f:
-        requires = [line.replace('\n', '') for line in f.readlines()]
-    return requires
-
-
+# -------------------------
+# Main setup
+# -------------------------
 if __name__ == '__main__':
-    if '--no_cuda_ext' in sys.argv:
-        ext_modules = []
-        sys.argv.remove('--no_cuda_ext')
-    else:
-        ext_modules = [
-            make_cuda_ext(
+    write_version_py()
+
+    ext_modules = []
+    cmdclass = {}
+
+    if want_cuda_ext():
+        entries = [
+            dict(
                 name='deform_conv_ext',
                 module='basicsr.models.ops.dcn',
                 sources=['src/deform_conv_ext.cpp'],
-                sources_cuda=[
-                    'src/deform_conv_cuda.cpp',
-                    'src/deform_conv_cuda_kernel.cu'
-                ]),
-            make_cuda_ext(
+                sources_cuda=['src/deform_conv_cuda.cpp', 'src/deform_conv_cuda_kernel.cu'],
+            ),
+            dict(
                 name='fused_act_ext',
                 module='basicsr.models.ops.fused_act',
                 sources=['src/fused_bias_act.cpp'],
-                sources_cuda=['src/fused_bias_act_kernel.cu']),
-            make_cuda_ext(
+                sources_cuda=['src/fused_bias_act_kernel.cu'],
+            ),
+            dict(
                 name='upfirdn2d_ext',
                 module='basicsr.models.ops.upfirdn2d',
                 sources=['src/upfirdn2d.cpp'],
-                sources_cuda=['src/upfirdn2d_kernel.cu']),
+                sources_cuda=['src/upfirdn2d_kernel.cu'],
+            ),
         ]
 
-    write_version_py()
+        build_ext_cls = None
+        for e in entries:
+            ext, BuildExtension, _ = make_cuda_or_cpp_ext(**e)
+            if ext is None:
+                ext_modules = []
+                build_ext_cls = None
+                break
+            ext_modules.append(ext)
+            build_ext_cls = BuildExtension
+
+        if build_ext_cls is not None:
+            cmdclass['build_ext'] = build_ext_cls
+
     setup(
         name='basicsr',
         version=get_version(),
@@ -157,9 +188,7 @@ if __name__ == '__main__':
         author_email='xintao.wang@outlook.com',
         keywords='computer vision, restoration, super resolution',
         url='https://github.com/xinntao/BasicSR',
-        packages=find_packages(
-            exclude=('options', 'datasets', 'experiments', 'results',
-                     'tb_logger', 'wandb')),
+        packages=find_packages(exclude=('options', 'datasets', 'experiments', 'results', 'tb_logger', 'wandb')),
         classifiers=[
             'Development Status :: 4 - Beta',
             'License :: OSI Approved :: Apache Software License',
@@ -169,8 +198,9 @@ if __name__ == '__main__':
             'Programming Language :: Python :: 3.8',
         ],
         license='Apache License 2.0',
-        setup_requires=['cython', 'numpy'],
-        install_requires=get_requirements(),
+        install_requires=[],
         ext_modules=ext_modules,
-        cmdclass={'build_ext': BuildExtension},
-        zip_safe=False)
+        cmdclass=cmdclass,
+        zip_safe=False
+    )
+
