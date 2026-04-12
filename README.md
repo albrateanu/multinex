@@ -3,7 +3,7 @@
 <div align="center">
 <p align="center"> <img src="assets/Multinex_logo.png" width="100px"> </p>
 
-# Multinex: Lightweight Low-Light Image Enhancement via Multi-prior Retinex
+# Multinex: Lightweight Low-Light Image Enhancement via Multi-prior Retinex (CVPR 2026)
 
 **Alexandru Brateanu, Tingting Mu, Codruta O. Ancuti, Cosmin Ancuti**
 
