@@ -1,5 +1,3 @@
-&nbsp;
-
 <div align="center">
 <p align="center"> <img src="assets/Multinex_logo.png" width="100px"> </p>
 
@@ -11,7 +9,6 @@
 [![Paper](https://img.shields.io/badge/PDF-179bd3)](LINK_TO_PAPER)
 [![Project Page](https://img.shields.io/badge/Page-179bd3)](LINK_TO_PROJECT_PAGE)
 
-&nbsp;
 
 </div>
 
