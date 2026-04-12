@@ -29,6 +29,29 @@ This repository contains the official implementation of **Multinex** for low-lig
 
 **Please Note:** Installation and running instructions for Object Detection on ExDark are available under `Detection/README.md`.
 
+## Results
+Quantitative results _Enhancement_ (LOL-v1, LOL-v2, MEF, DICM, LIME, NPE), and _Detection_ (ExDark)
+
+<details>
+<summary><strong>LOL Datasets</strong> (click to expand) </summary>
+
+<img src = "assets/LOL_table.png"> 
+</details>
+
+<details>
+<summary><strong>No-Reference Datasets</strong> (click to expand) </summary>
+
+<img src = "assets/NoRef_table.png"> 
+</details>
+
+
+<details>
+<summary><strong>Object Detection on ExDark</strong> (click to expand) </summary>
+
+<img src = "assets/ExDark_table.png"> 
+</details>
+
+
 ## 1. Create Environment
 
 We use a PyTorch 2 environment.
