@@ -172,7 +172,7 @@ python Enhancement/test.py --opt Options/MultinexNano_LOL-v2-synthetic.yaml --we
 
 - #### Self-ensemble testing strategy
 
-For slower, but stronger results.
+For stronger results, add `--self_ensemble` argument.
 
 ```bash
 python Enhancement/test.py --opt Options/Multinex_LOL-v1.yaml --weights pretrained_weights/Multinex_LOLv1.pth --dataset LOL_v1 --self_ensemble
