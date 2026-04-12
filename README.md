@@ -120,31 +120,9 @@ The option files currently used in this repository are:
 
 ## 3. Testing
 
-Download pretrained checkpoints and place them in:
+Download pretrained checkpoints directory from [Google Drive](LINK_TO_WEIGHTS).
 
-```text
-pretrained_weights/
-```
-
-Recommended checkpoint names:
-
-```text
-pretrained_weights/
-├── Multinex_LOLv1.pth
-├── Multinex_LOLv2_real.pth
-├── Multinex_LOLv2_syn.pth
-├── MultinexNano_LOLv1.pth
-├── MultinexNano_LOLv2_real.pth
-└── MultinexNano_LOLv2_syn.pth
-```
-
-Activate the environment first:
-
-```bash
-conda activate multinex
-```
-
-### Standard Multinex
+### Multinex
 
 ```bash
 # LOL-v1
