@@ -27,6 +27,7 @@
 ### Introduction
 This repository contains the official implementation of **Multinex** for low-light image enhancement. It provides training and testing code for paired-image enhancement on standard benchmarks, together with pretrained checkpoints for direct evaluation.
 
+**Please Note:** Installation and running instructions for Object Detection on ExDark are available under `Detection/README.md`.
 
 ## 1. Create Environment
 
