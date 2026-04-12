@@ -93,6 +93,8 @@ pip install einops gdown addict future lmdb numpy pyyaml requests scipy yapf lpi
 pip install -e .
 ```
 
+**Please Note:** `python setup.py develop` has been deprecated. As a result, the above installation is recommended. With this in mind, using `basicsr` must be done as `python -m basicsr.<filename>` rather than `python basicsr/<filename>.py`.
+
 &nbsp;
 
 ## 2. Prepare Dataset
