@@ -7,7 +7,7 @@
 
 [![Paper](https://img.shields.io/badge/Abstract-arXiv-green)](LINK_TO_PAPER)
 [![Paper](https://img.shields.io/badge/PDF-arXiv-orange)](LINK_TO_PAPER)
-[![Project Page](https://img.shields.io/badge/Project-Page-blue)](LINK_TO_PROJECT_PAGE)
+[![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://albrateanu.github.io/Multinex/)
 
 
 </div>
