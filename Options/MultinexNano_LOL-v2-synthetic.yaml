@@ -143,8 +143,9 @@ train:
   # losses
   pixel_opt:
     type: HybridLoss
-    loss_weight: 1
-    reduction: mean
+    w_pixloss: 1.0
+    w_perc: 0.01
+    w_msssim: 0.2
 
 # validation settings
 val:

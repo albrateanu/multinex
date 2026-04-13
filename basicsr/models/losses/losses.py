@@ -36,34 +36,34 @@ class VGGPerceptualLoss(nn.Module):
         y_true, y_pred = y_true.to(next(self.loss_model.parameters()).device), y_pred.to(next(self.loss_model.parameters()).device)
         return F.mse_loss(self.loss_model(y_true), self.loss_model(y_pred))
 
-def multiscale_ssim_loss(y_true, y_pred, max_val=1.0, power_factors=[0.5, 0.5]):
+def multiscale_ssim_loss(y_true, y_pred, max_val=1.0):
     return 1.0 - ms_ssim(y_true, y_pred, data_range=max_val, size_average=True)
 
-def ssim_loss(y_true, y_pred, max_val=1.0, power_factors=[0.5, 0.5]):
+def ssim_loss(y_true, y_pred, max_val=1.0):
     return 1.0 - ssim(y_true, y_pred, data_range=max_val, size_average=True)
 
 class HybridLoss(nn.Module):
-    def __init__(self, loss_weight=1.0, reduction='mean', device=None, alpha1=1.0, alpha2=0.01, alpha3=0.2):
+    def __init__(self, w_pixloss=1.0, w_perc=0.01, w_msssim=0.2):
         super(HybridLoss, self).__init__()
-        if alpha1 != 0:
+        if w_pixloss != 0:
             self.pixel_loss = MSELoss()
         else:
             print('not using MSE Loss')
         
-        if alpha2 != 0:
+        if w_perc != 0:
             self.perceptual_loss_model = None
         else:
             print('not using Perc Loss')
 
-        if alpha3 != 0:
-            self.ms_ssim_loss = ssim_loss
+        if w_msssim != 0:
+            self.ms_ssim_loss = multiscale_ssim_loss
         else:
             print('not using SSIM Loss')
         
 
-        self.alpha1 = alpha1
-        self.alpha2 = alpha2
-        self.alpha3 = alpha3
+        self.alpha1 = w_pixloss
+        self.alpha2 = w_perc
+        self.alpha3 = w_msssim
 
     def forward(self, y_true, y_pred):
         total_loss = 0
