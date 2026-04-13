@@ -61,26 +61,26 @@ class HybridLoss(nn.Module):
             print('not using SSIM Loss')
         
 
-        self.alpha1 = w_pixloss
-        self.alpha2 = w_perc
-        self.alpha3 = w_msssim
+        self.w_pixloss = w_pixloss
+        self.w_perc = w_perc
+        self.w_msssim = w_msssim
 
     def forward(self, y_true, y_pred):
         total_loss = 0
 
-        if self.alpha1 != 0:
+        if self.w_pixloss != 0:
             pixel_l = self.pixel_loss(y_true, y_pred)
-            total_loss += self.alpha1 * pixel_l
+            total_loss += self.w_pixloss * pixel_l
         
-        if self.alpha2 != 0:
+        if self.w_perc != 0:
             if self.perceptual_loss_model is None:
                 self.perceptual_loss_model = VGGPerceptualLoss(y_true.device)
             perc_l = self.perceptual_loss_model(y_true, y_pred)
-            total_loss += self.alpha2*perc_l 
+            total_loss += self.w_perc*perc_l 
         
-        if self.alpha3 != 0:
+        if self.w_msssim != 0:
             ms_ssim_l = self.ms_ssim_loss(y_true, y_pred)
-            total_loss += self.alpha3*ms_ssim_l
+            total_loss += self.w_msssim*ms_ssim_l
 
         return torch.mean(total_loss)
 
