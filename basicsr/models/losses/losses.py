@@ -86,7 +86,7 @@ class HybridLoss(nn.Module):
         
         if self.w_perc != 0:
             if self.perceptual_loss_model is None:
-                self.perceptual_loss_model = VGGPerceptualLoss(y_true.device)
+                self.perceptual_loss_model = VGGPerceptualLoss(y_true.device).to(y_true.device)
             perc_l = self.perceptual_loss_model(y_true, y_pred)
             total_loss += self.w_perc*perc_l 
         
