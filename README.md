@@ -14,7 +14,7 @@
 </div>
 
 ### News
-- **XX.04.2026 :** [Pre-print](LINK_TO_PAPER), [code](https://github.com/albrateanu/multinex/), and [paper page](https://albrateanu.github.io/Multinex/) for **Multinex** (accepted at CVPR 2026) are released!
+- **XX.04.2026 :** [Pre-print](https://arxiv.org/abs/2604.10359), [code](https://github.com/albrateanu/multinex/), and [paper page](https://albrateanu.github.io/Multinex/) for **Multinex** (accepted at CVPR 2026) are released!
 
 <div align="justify">
     
