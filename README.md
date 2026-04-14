@@ -5,8 +5,8 @@
 
 **[Alexandru Brateanu](https://albrateanu.github.io/), [Tingting Mu](https://personalpages.manchester.ac.uk/staff/tingting.mu/Site/About_Me.html), [Codruta O. Ancuti](https://ro.linkedin.com/in/codruta), [Cosmin Ancuti](https://www.linkedin.com/in/cosmin-ancuti-86b3872/)**
 
-[![Paper](https://img.shields.io/badge/Abstract-arXiv-green)](LINK_TO_PAPER)
-[![Paper](https://img.shields.io/badge/PDF-arXiv-orange)](LINK_TO_PAPER)
+[![Paper](https://img.shields.io/badge/Abstract-arXiv-green)](https://arxiv.org/abs/2604.10359)
+[![Paper](https://img.shields.io/badge/PDF-arXiv-orange)](https://arxiv.org/pdf/2604.10359)
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://albrateanu.github.io/Multinex/)
 [![Project Page](https://img.shields.io/badge/PDF-Supplementary-yellow)](https://drive.google.com/file/d/1-bRljca_GG1wvwJYP56bTHhpJZkJmulB/view)
 
