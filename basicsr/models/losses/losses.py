@@ -32,19 +32,10 @@ class VGGPerceptualLoss(nn.Module):
         for p in self.loss_model.parameters():
             p.requires_grad = False
 
-        self.register_buffer("mean", torch.tensor([0.485, 0.456, 0.406]).view(1, 3, 1, 1))
-        self.register_buffer("std", torch.tensor([0.229, 0.224, 0.225]).view(1, 3, 1, 1))
-
-    def normalize(self, x):
-        return (x - self.mean) / self.std
-
     def forward(self, y_true, y_pred):
         device = next(self.loss_model.parameters()).device
         y_true = y_true.to(device)
         y_pred = y_pred.to(device)
-
-        y_true = self.normalize(y_true)
-        y_pred = self.normalize(y_pred)
 
         return F.mse_loss(self.loss_model(y_true), self.loss_model(y_pred))
 
