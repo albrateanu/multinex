@@ -2,7 +2,7 @@ import torch
 from torch import nn as nn
 from torch.nn import functional as F
 import numpy as np
-from pytorch_msssim import ssim
+from pytorch_msssim import ssim, ms_ssim
 import torchvision.models as models
 
 from basicsr.models.losses.loss_util import weighted_loss
@@ -40,7 +40,7 @@ class VGGPerceptualLoss(nn.Module):
         return F.mse_loss(self.loss_model(y_true), self.loss_model(y_pred))
 
 def multiscale_ssim_loss(y_true, y_pred, max_val=1.0):
-    return 1.0 - ssim(y_true, y_pred, data_range=max_val, size_average=True)
+    return 1.0 - ms_ssim(y_true, y_pred, data_range=max_val, size_average=True, weights=[0.95, 0.05], win_size=5)
 
 class HybridLoss(nn.Module):
     def __init__(self, w_pixloss=1.0, w_perc=0.01, w_msssim=0.2):
