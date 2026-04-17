@@ -206,6 +206,8 @@ python -m basicsr.train --opt Options/MultinexNano_LOL-v2-real.yaml
 python -m basicsr.train --opt Options/MultinexNano_LOL-v2-synthetic.yaml
 ```
 
+**Note:** For best results, use  `val.val_freq: 5` in the yaml configs under `Options/` directory. 
+
 &nbsp;
 
 ## 5. Citation
