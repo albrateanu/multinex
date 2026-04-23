@@ -10,7 +10,7 @@
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://albrateanu.github.io/Multinex/)
 [![Project Page](https://img.shields.io/badge/PDF-Supplementary-yellow)](https://drive.google.com/file/d/1-bRljca_GG1wvwJYP56bTHhpJZkJmulB/view)
 
-
+**Consider giving our repository a :star: star :star: if you find it useful!**
 </div>
 
 ### News
