@@ -37,7 +37,7 @@ pip install -v -e .
 
 ## Dataset Setup
 
-Download Exdark dataset and unzip it under `data/` directory.
+Download Exdark dataset from [Google Drive](https://drive.google.com/file/d/1X_zB_OSp_thhk9o26y1ZZ-F85UeS0OAC/view?usp=sharing) (link from [IAT](https://github.com/cuiziteng/Illumination-Adaptive-Transformer/tree/main/IAT_high/IAT_mmdetection)) and unzip it under `data/` directory.
 
 From `Multinex/Detection/`, it should match the structure below:
 
