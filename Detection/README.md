@@ -51,6 +51,18 @@ data/EXDark
     └── label
 ```
 
+## Test
+
+Please download model weights (Multinex + YOLOv3) from [Google Drive](https://drive.google.com/drive/folders/1l_hGZBRNG4v6tWu7-XKWBBvL0PNGtMi4) and place the `.pth` files under a new `weights/` directory.
+
+```bash
+# Lightweight
+python tools/test.py configs/yolo/yolov3_Multinex_Exdark.py weights/MultinexYOLO.pth --eval mAP
+
+# Nano
+python tools/test.py configs/yolo/yolov3_MultinexNano_Exdark.py weights/MultinexNanoYOLO.pth --eval mAP
+```
+
 ## Train
 
 ```bash
@@ -59,14 +71,4 @@ python tools/train.py configs/yolo/yolov3_Multinex_Exdark.py
 
 # Nano
 python tools/train.py configs/yolo/yolov3_MultinexNano_Exdark.py
-```
-
-## Test
-
-```bash
-# Lightweight
-python tools/test.py configs/yolo/yolov3_Multinex_Exdark.py weights/MultinexYOLO.pth --eval mAP
-
-# Nano
-python tools/test.py configs/yolo/yolov3_MultinexNano_Exdark.py weights/MultinexNanoYOLO.pth --eval mAP
 ```
