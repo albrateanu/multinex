@@ -65,8 +65,8 @@ python tools/train.py configs/yolo/yolov3_MultinexNano_Exdark.py
 
 ```bash
 # Lightweight
-python tools/test.py configs/yolo/yolov3_Multinex_Exdark.py work_dirs/yolov3_Multinex_Exdark/MultinexYOLO.pth --eval mAP
+python tools/test.py configs/yolo/yolov3_Multinex_Exdark.py weights/MultinexYOLO.pth --eval mAP
 
 # Nano
-python tools/test.py configs/yolo/yolov3_MultinexNano_Exdark.py work_dirs/yolov3_MultinexNano_Exdark/MultinexNanoYOLO.pth --eval mAP
+python tools/test.py configs/yolo/yolov3_MultinexNano_Exdark.py weights/MultinexNanoYOLO.pth --eval mAP
 ```
