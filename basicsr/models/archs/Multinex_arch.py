@@ -332,13 +332,12 @@ class ChrominanceExtractor(nn.Module):
 
 class Multinex(nn.Module):
     """
-    RetinexMSEFMultiLum with direct (non-gating) attention application and 3-stage block layout:
+    Multinex with direct (non-gating) attention application and 3-stage block layout:
       Branch = pre_blocks -> [optional attention] -> mid_blocks -> post_blocks
       Illum:  maps -> stem(C) -> pre -> (attn?) -> mid -> post -> head(1)
       Chroma: maps -> stem(C) -> pre -> (attn?) -> mid -> post -> head(3)
       Fusion: out = chroma3 * luma1   (+ optional residual)
 
-    All previous knobs preserved; new knobs add maximum flexibility.
     """
     def __init__(self,
                  in_ch: int = 3,
