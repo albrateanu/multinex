@@ -1,55 +1,42 @@
 Multinex Non-Commercial Research License
 
-Copyright (c) 2026 Alex Brateanu
+Copyright (c) 2026 Alexandru Brateanu
 
 This software, including source code, model definitions, training scripts,
+configuration files, documentation, pretrained weights/checkpoints, and related
+materials authored for Multinex, is made available for non-commercial research
+and educational use only.
 
-configuration files, documentation, and related materials, is made available
-
-for non-commercial research and educational use only.
+This is a source-available non-commercial license. It is not an open-source
+license, and it does not grant permission for commercial use.
 
 1. Permitted Uses
 
 You may use, copy, modify, study, and share this software only for
-
 non-commercial purposes, including:
 
 - academic research
-
 - personal study
-
 - non-commercial experimentation
-
 - reproducibility studies
-
-- benchmarking
-
+- benchmarking for non-commercial research
 - teaching and educational use
-
 - publication of non-commercial research results
 
 2. Prohibited Commercial Uses
 
 You may not use this software for commercial purposes without prior written
-
 permission from the copyright holder.
 
 Commercial use includes, but is not limited to:
 
 - use by, for, or on behalf of a for-profit company
-
 - use in a commercial product, service, platform, API, or software system
-
 - use in paid consulting, contract work, or client delivery
-
 - internal company research, prototyping, testing, benchmarking, or evaluation
-
 - use in a startup, commercial lab, or venture-funded project
-
 - use to train, fine-tune, evaluate, or deploy models for commercial advantage
-
 - use in any revenue-generating or cost-saving workflow
-
 - redistribution as part of a commercial package, product, or service
 
 3. Commercial Collaboration
@@ -57,15 +44,12 @@ Commercial use includes, but is not limited to:
 Commercial use is not granted under this license.
 
 Commercial access to Multinex is available only through a separate written
-
 agreement, collaboration, partnership, or commercial license with the copyright
-
 holder.
 
 To discuss commercial collaboration, contact:
 
-Alex Brateanu
-
+Alexandru Brateanu
 Email: albrateanu@gmail.com
 
 4. Redistribution
@@ -73,73 +57,57 @@ Email: albrateanu@gmail.com
 You may redistribute this software or modified versions of it only if:
 
 - the use remains non-commercial;
-
 - this license notice is included;
-
 - the original copyright notice is preserved;
-
 - any modified version clearly states that changes were made;
-
 - no additional terms are added that remove or weaken the restrictions in this license.
 
 5. Publications and Attribution
 
 If you use this software in academic or non-commercial research, you must
-
 provide appropriate attribution to Multinex and its author.
 
 Recommended citation format:
 
-Alex Brateanu. Multinex: Non-Commercial Research Code for Multimodal Image Enhancement, 2026.
+Alexandru Brateanu. Multinex: Non-Commercial Research Code for Multimodal Image Enhancement, 2026.
 
 If a paper associated with Multinex is available, cite that paper instead.
 
 6. Third-Party Components
 
-This license applies only to the original Multinex code and materials authored
-
-by Alex Brateanu.
+This license applies only to original Multinex code and materials authored by
+Alexandru Brateanu.
 
 Third-party libraries, datasets, pretrained models, checkpoints, and external
-
 resources remain subject to their own licenses. You are responsible for
-
-complying with all applicable third-party license terms.
+complying with all applicable third-party license terms. Nothing in this
+license alters third-party license notices that are included in this repository.
 
 7. Model Weights and Outputs
 
 Unless stated otherwise, trained weights, checkpoints, and generated outputs
-
 distributed with this repository are subject to the same non-commercial
-
 restrictions as the source code.
 
 8. No Trademark Rights
 
-This license does not grant permission to use the names “Multinex,”
-
-“Alex Brateanu,” or any associated logos, marks, or project branding for
-
+This license does not grant permission to use the names "Multinex,"
+"Alexandru Brateanu," or any associated logos, marks, or project branding for
 commercial endorsement or promotion without prior written permission.
 
 9. No Warranty
 
-This software is provided “as is,” without warranty of any kind, express or
-
+This software is provided "as is," without warranty of any kind, express or
 implied, including but not limited to warranties of merchantability, fitness
-
 for a particular purpose, and non-infringement.
 
 The author is not liable for any claim, damages, loss, or other liability
-
 arising from the use of this software.
 
 10. Termination
 
 Any violation of this license automatically terminates your rights to use,
-
 copy, modify, distribute, or otherwise access this software.
 
 Commercial use after termination requires a separate written agreement with
-
 the copyright holder.
