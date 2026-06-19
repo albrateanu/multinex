@@ -1,6 +1,11 @@
+#!/usr/bin/env python3
+# Copyright (c) 2026 Alexandru Brateanu
+# Multinex is licensed for non-commercial research and educational use only.
+# Commercial use requires prior written permission.
+# See LICENSE for details.
+
 # This code follows the same logic as profiling for RetinexFormer (ICCV 2023) and HVI-CIDNet (CVPR 2025)
 
-#!/usr/bin/env python3
 # complexity.py
 import argparse
 import logging

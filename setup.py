@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+# Copyright (c) 2026 Alexandru Brateanu
+# Multinex is licensed for non-commercial research and educational use only.
+# Commercial use requires prior written permission.
+# See LICENSE for details.
+
 
 from setuptools import find_packages, setup
 import os
@@ -182,22 +187,21 @@ if __name__ == '__main__':
     setup(
         name='basicsr',
         version=get_version(),
-        description='Open Source Image and Video Super-Resolution Toolbox',
+        description='Multinex source-available non-commercial low-light image enhancement research code',
         long_description=readme(),
-        author='Xintao Wang',
-        author_email='xintao.wang@outlook.com',
+        author='Alexandru Brateanu',
+        author_email='albrateanu@gmail.com',
         keywords='computer vision, restoration, super resolution',
-        url='https://github.com/xinntao/BasicSR',
+        url='https://github.com/albrateanu/multinex',
         packages=find_packages(exclude=('options', 'datasets', 'experiments', 'results', 'tb_logger', 'wandb')),
         classifiers=[
             'Development Status :: 4 - Beta',
-            'License :: OSI Approved :: Apache Software License',
             'Operating System :: OS Independent',
             'Programming Language :: Python :: 3',
             'Programming Language :: Python :: 3.7',
             'Programming Language :: Python :: 3.8',
         ],
-        license='Apache License 2.0',
+        license='Multinex Non-Commercial Research License',
         install_requires=[],
         ext_modules=ext_modules,
         cmdclass=cmdclass,

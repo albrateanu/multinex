@@ -9,6 +9,7 @@
 [![Paper](https://img.shields.io/badge/PDF-arXiv-orange)](https://arxiv.org/pdf/2604.10359)
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://albrateanu.github.io/Multinex/)
 [![Project Page](https://img.shields.io/badge/PDF-Supplementary-yellow)](https://drive.google.com/file/d/1-bRljca_GG1wvwJYP56bTHhpJZkJmulB/view)
+![License: Non-Commercial Research](https://img.shields.io/badge/license-non--commercial%20research-red)
 
 **Consider giving our repository a :star: star :star: if you find it useful!**
 </div>
@@ -28,7 +29,7 @@
 <img src = "assets/framework.png"> 
 
 ### Introduction
-This repository contains the official implementation of **Multinex** for low-light image enhancement. It provides training and testing code for paired-image enhancement on standard benchmarks, together with pretrained checkpoints for direct evaluation.
+This source-available repository contains the official implementation of **Multinex** for low-light image enhancement. It provides training and testing code for paired-image enhancement on standard benchmarks, together with pretrained checkpoints for direct evaluation.
 
 **Please Note:** Installation and running instructions for Object Detection on ExDark are available under `Detection/README.md`.
 
@@ -226,45 +227,31 @@ Cite our work if Multinex is useful to your research.
 
 ## License
 
-Multinex is released for non-commercial research and educational use only.
+Copyright (c) 2026 Alexandru Brateanu. Multinex is source-available for non-commercial research and educational use only. It is not open-source software, and commercial use is not permitted without prior written permission.
 
 You may use, modify, and share this code for:
 
 - academic research
-
 - personal study
-
 - non-commercial experimentation
-
-- reproducibility and benchmarking
-
+- reproducibility and benchmarking for non-commercial research
 - teaching and educational use
-
-Commercial use is not permitted without prior written permission.
 
 Commercial use includes, but is not limited to:
 
 - use by or for a for-profit company
-
 - integration into a commercial product or service
-
 - internal company research, prototyping, evaluation, or benchmarking
-
 - paid consulting or client work
-
 - SaaS/API deployment
-
 - use in a startup, product pipeline, or revenue-generating system
-
 - training, fine-tuning, or deploying models for commercial advantage
 
-Commercial access is available only through collaboration, partnership, or a separate written commercial license.
+Commercial access is available only through collaboration, partnership, or a separate written commercial license. See [COMMERCIAL_USE.md](COMMERCIAL_USE.md) for commercial collaboration options.
 
 For commercial collaboration, contact:
 
-Alexandru Brateanu  
-
+Alexandru Brateanu<br>
 Email: albrateanu@gmail.com
 
-This repository is provided as research software. No warranty is provided.
-
+This repository is provided as research software. No warranty is provided. See [LICENSE](LICENSE) for the full license terms.
