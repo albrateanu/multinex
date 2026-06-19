@@ -19,14 +19,14 @@
 - **14.04.2026 :** [Pre-print](https://arxiv.org/abs/2604.10359), [code](https://github.com/albrateanu/multinex/), and [paper page](https://albrateanu.github.io/Multinex/) for **Multinex** (accepted at CVPR 2026) are released!
 
 <div align="justify">
-    
-> **Abstract:** *Low-light image enhancement (LLIE) aims to restore natural visibility, color fidelity, and structural detail under severe illumination degradation. State-of-the-art (SOTA) LLIE techniques often rely on large models and multi-stage training, limiting practicality for edge deployment. Moreover, their dependence on a single color space introduces instability and visible exposure or color artifacts. To address these, we propose Multinex, an ultra-lightweight structured framework that integrates multiple fine-grained representations within a principled Retinex residual formulation. It decomposes an image into illumination and color prior stacks derived from distinct analytic representations, and learns to fuse these representations into luminance and reflectance adjustments required to correct exposure. By prioritizing enhancement over reconstruction and exploiting lightweight neural operations, Multinex significantly reduces computational cost, exemplified by its lightweight (45K parameters) and nano (0.7K parameters) versions. Extensive benchmarks show that all lightweight variants significantly outperform their corresponding lightweight SOTA models, and reach comparable performance to heavy models.* 
+
+> **Abstract:** *Low-light image enhancement (LLIE) aims to restore natural visibility, color fidelity, and structural detail under severe illumination degradation. State-of-the-art (SOTA) LLIE techniques often rely on large models and multi-stage training, limiting practicality for edge deployment. Moreover, their dependence on a single color space introduces instability and visible exposure or color artifacts. To address these, we propose Multinex, an ultra-lightweight structured framework that integrates multiple fine-grained representations within a principled Retinex residual formulation. It decomposes an image into illumination and color prior stacks derived from distinct analytic representations, and learns to fuse these representations into luminance and reflectance adjustments required to correct exposure. By prioritizing enhancement over reconstruction and exploiting lightweight neural operations, Multinex significantly reduces computational cost, exemplified by its lightweight (45K parameters) and nano (0.7K parameters) versions. Extensive benchmarks show that all lightweight variants significantly outperform their corresponding lightweight SOTA models, and reach comparable performance to heavy models.*
 
 </div>
 
 ## Network Architecture
 
-<img src = "assets/framework.png"> 
+<img src = "assets/framework.png">
 
 ### Introduction
 This source-available repository contains the official implementation of **Multinex** for low-light image enhancement. It provides training and testing code for paired-image enhancement on standard benchmarks, together with pretrained checkpoints for direct evaluation.
@@ -39,20 +39,20 @@ Quantitative results for _Enhancement_ (LOL-v1, LOL-v2, MEF, DICM, LIME, NPE), a
 <details>
 <summary><strong>LOL Datasets</strong> (click to expand) </summary>
 
-<img src = "assets/LOL_table.png"> 
+<img src = "assets/LOL_table.png">
 </details>
 
 <details>
 <summary><strong>No-Reference Datasets</strong> (click to expand) </summary>
 
-<img src = "assets/NoRef_table.png"> 
+<img src = "assets/NoRef_table.png">
 </details>
 
 
 <details>
 <summary><strong>Object Detection on ExDark</strong> (click to expand) </summary>
 
-<img src = "assets/ExDark_table.png"> 
+<img src = "assets/ExDark_table.png">
 </details>
 
 &nbsp;
@@ -146,7 +146,7 @@ data/
 
 ## 3. Testing
 
-Model weights are available under `pretrained_weights/`, and are contained within the repository due to their small file sizes (280 KB for Multinex, 20 KB for Multinex-Nano). 
+Model weights are available under `pretrained_weights/`, and are contained within the repository due to their small file sizes (280 KB for Multinex, 20 KB for Multinex-Nano). These weights are Model Materials covered by the non-commercial license notice in [`pretrained_weights/README.md`](pretrained_weights/README.md) and [`MODEL_CARD.md`](MODEL_CARD.md).
 
 ### Multinex
 
@@ -208,7 +208,7 @@ python -m basicsr.train --opt Options/MultinexNano_LOL-v2-real.yaml
 python -m basicsr.train --opt Options/MultinexNano_LOL-v2-synthetic.yaml
 ```
 
-**Note:** For best results, use  `val.val_freq: 5` in the yaml configs under `Options/` directory. 
+**Note:** For best results, use  `val.val_freq: 5` in the yaml configs under `Options/` directory.
 
 &nbsp;
 
@@ -227,9 +227,13 @@ Cite our work if Multinex is useful to your research.
 
 ## License
 
-Copyright (c) 2026 Alexandru Brateanu. Multinex is source-available for non-commercial research and educational use only. It is not open-source software, and commercial use is not permitted without prior written permission.
+Copyright (c) 2026 Alexandru Brateanu. Multinex is source-available for non-commercial research and educational use under the [PolyForm Noncommercial License 1.0.0](LICENSE). It is not open-source software in the OSI sense, and commercial use is not permitted without a separate written license.
 
-You may use, modify, and share this code for:
+The public non-commercial license applies to original Multinex source code, model definitions, documentation, pretrained weights, checkpoints, configuration files, and related model materials authored by Alexandru Brateanu, unless otherwise stated. Third-party components remain under their original licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+For clarity, "Model Materials" include model weights, checkpoints, adapters, LoRAs, tokenizer files, configuration files, architecture code, training and inference code, documentation, and any modified, merged, quantized, distilled, or fine-tuned versions. See [MODEL_CARD.md](MODEL_CARD.md) for the model-specific license notice.
+
+You may use, modify, and share Multinex only for permitted non-commercial purposes, such as:
 
 - academic research
 - personal study
@@ -246,12 +250,13 @@ Commercial use includes, but is not limited to:
 - SaaS/API deployment
 - use in a startup, product pipeline, or revenue-generating system
 - training, fine-tuning, or deploying models for commercial advantage
+- use of Model Materials in or to support any customer deliverable, commercial R&D, hosted API, internal business process, or revenue-generating workflow
 
-Commercial access is available only through collaboration, partnership, or a separate written commercial license. See [COMMERCIAL_USE.md](COMMERCIAL_USE.md) for commercial collaboration options.
+Commercial access is available only through collaboration, partnership, or a separate written commercial license. Commercial evaluation or production use requires a separate written agreement. See [COMMERCIAL_USE.md](COMMERCIAL_USE.md) for commercial collaboration options.
 
 For commercial collaboration, contact:
 
 Alexandru Brateanu<br>
 Email: albrateanu@gmail.com
 
-This repository is provided as research software. No warranty is provided. See [LICENSE](LICENSE) for the full license terms.
+This repository is provided as research software. No warranty is provided. See [LICENSE](LICENSE) for the full license terms and [RELEASE_NOTES.md](RELEASE_NOTES.md) for the license-clarification release note.

@@ -1,113 +1,75 @@
-Multinex Non-Commercial Research License
+# PolyForm Noncommercial License 1.0.0
 
-Copyright (c) 2026 Alexandru Brateanu
+<https://polyformproject.org/licenses/noncommercial/1.0.0>
 
-This software, including source code, model definitions, training scripts,
-configuration files, documentation, pretrained weights/checkpoints, and related
-materials authored for Multinex, is made available for non-commercial research
-and educational use only.
+## Acceptance
 
-This is a source-available non-commercial license. It is not an open-source
-license, and it does not grant permission for commercial use.
+In order to get any license under these terms, you must agree to them as both strict obligations and conditions to all your licenses.
 
-1. Permitted Uses
+## Copyright License
 
-You may use, copy, modify, study, and share this software only for
-non-commercial purposes, including:
+The licensor grants you a copyright license for the software to do everything you might do with the software that would otherwise infringe the licensor's copyright in it for any permitted purpose. However, you may only distribute the software according to Distribution License and make changes or new works based on the software according to Changes and New Works License.
 
-- academic research
-- personal study
-- non-commercial experimentation
-- reproducibility studies
-- benchmarking for non-commercial research
-- teaching and educational use
-- publication of non-commercial research results
+## Distribution License
 
-2. Prohibited Commercial Uses
+The licensor grants you an additional copyright license to distribute copies of the software. Your license to distribute covers distributing the software with changes and new works permitted by Changes and New Works License.
 
-You may not use this software for commercial purposes without prior written
-permission from the copyright holder.
+## Notices
 
-Commercial use includes, but is not limited to:
+You must ensure that anyone who gets a copy of any part of the software from you also gets a copy of these terms or the URL for them above, as well as copies of any plain-text lines beginning with `Required Notice:` that the licensor provided with the software. For example:
 
-- use by, for, or on behalf of a for-profit company
-- use in a commercial product, service, platform, API, or software system
-- use in paid consulting, contract work, or client delivery
-- internal company research, prototyping, testing, benchmarking, or evaluation
-- use in a startup, commercial lab, or venture-funded project
-- use to train, fine-tune, evaluate, or deploy models for commercial advantage
-- use in any revenue-generating or cost-saving workflow
-- redistribution as part of a commercial package, product, or service
+> Required Notice: Copyright Yoyodyne, Inc. (http://example.com)
 
-3. Commercial Collaboration
+## Changes and New Works License
 
-Commercial use is not granted under this license.
+The licensor grants you an additional copyright license to make changes and new works based on the software for any permitted purpose.
 
-Commercial access to Multinex is available only through a separate written
-agreement, collaboration, partnership, or commercial license with the copyright
-holder.
+## Patent License
 
-To discuss commercial collaboration, contact:
+The licensor grants you a patent license for the software that covers patent claims the licensor can license, or becomes able to license, that you would infringe by using the software.
 
-Alexandru Brateanu
-Email: albrateanu@gmail.com
+## Noncommercial Purposes
 
-4. Redistribution
+Any noncommercial purpose is a permitted purpose.
 
-You may redistribute this software or modified versions of it only if:
+## Personal Uses
 
-- the use remains non-commercial;
-- this license notice is included;
-- the original copyright notice is preserved;
-- any modified version clearly states that changes were made;
-- no additional terms are added that remove or weaken the restrictions in this license.
+Personal use for research, experiment, and testing for the benefit of public knowledge, personal study, private entertainment, hobby projects, amateur pursuits, or religious observance, without any anticipated commercial application, is use for a permitted purpose.
 
-5. Publications and Attribution
+## Noncommercial Organizations
 
-If you use this software in academic or non-commercial research, you must
-provide appropriate attribution to Multinex and its author.
+Use by any charitable organization, educational institution, public research organization, public safety or health organization, environmental protection organization, or government institution is use for a permitted purpose regardless of the source of funding or obligations resulting from the funding.
 
-Recommended citation format:
+## Fair Use
 
-Alexandru Brateanu. Multinex: Non-Commercial Research Code for Multimodal Image Enhancement, 2026.
+You may have "fair use" rights for the software under the law. These terms do not limit them.
 
-If a paper associated with Multinex is available, cite that paper instead.
+## No Other Rights
 
-6. Third-Party Components
+These terms do not allow you to sublicense or transfer any of your licenses to anyone else, or prevent the licensor from granting licenses to anyone else. These terms do not imply any other licenses.
 
-This license applies only to original Multinex code and materials authored by
-Alexandru Brateanu.
+## Patent Defense
 
-Third-party libraries, datasets, pretrained models, checkpoints, and external
-resources remain subject to their own licenses. You are responsible for
-complying with all applicable third-party license terms. Nothing in this
-license alters third-party license notices that are included in this repository.
+If you make any written claim that the software infringes or contributes to infringement of any patent, your patent license for the software granted under these terms ends immediately. If your company makes such a claim, your patent license ends immediately for work on behalf of your company.
 
-7. Model Weights and Outputs
+## Violations
 
-Unless stated otherwise, trained weights, checkpoints, and generated outputs
-distributed with this repository are subject to the same non-commercial
-restrictions as the source code.
+The first time you are notified in writing that you have violated any of these terms, or done anything with the software not covered by your licenses, your licenses can nonetheless continue if you come into full compliance with these terms, and take practical steps to correct past violations, within 32 days of receiving notice. Otherwise, all your licenses end immediately.
 
-8. No Trademark Rights
+## No Liability
 
-This license does not grant permission to use the names "Multinex,"
-"Alexandru Brateanu," or any associated logos, marks, or project branding for
-commercial endorsement or promotion without prior written permission.
+As far as the law allows, the software comes as is, without any warranty or condition, and the licensor will not be liable to you for any damages arising out of these terms or the use or nature of the software, under any kind of legal claim.
 
-9. No Warranty
+## Definitions
 
-This software is provided "as is," without warranty of any kind, express or
-implied, including but not limited to warranties of merchantability, fitness
-for a particular purpose, and non-infringement.
+The licensor is the individual or entity offering these terms, and the software is the software the licensor makes available under these terms.
 
-The author is not liable for any claim, damages, loss, or other liability
-arising from the use of this software.
+You refers to the individual or entity agreeing to these terms.
 
-10. Termination
+Your company is any legal entity, sole proprietorship, or other kind of organization that you work for, plus all organizations that have control over, are under the control of, or are under common control with that organization. Control means ownership of substantially all the assets of an entity, or the power to direct its management and policies by vote, contract, or otherwise. Control can be direct or indirect.
 
-Any violation of this license automatically terminates your rights to use,
-copy, modify, distribute, or otherwise access this software.
+Your licenses are all the licenses granted to you for the software under these terms.
 
-Commercial use after termination requires a separate written agreement with
-the copyright holder.
+Use means anything you do with the software requiring one of your licenses.
+
+© PolyForm Project Inc.
