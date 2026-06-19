@@ -262,7 +262,7 @@ Commercial access is available only through collaboration, partnership, or a sep
 
 For commercial collaboration, contact:
 
-Alex Brateanu  
+Alexandru Brateanu  
 
 Email: albrateanu@gmail.com
 
