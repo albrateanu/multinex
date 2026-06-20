@@ -1,3 +1,8 @@
+# Copyright (c) 2026 Alexandru Brateanu
+# Multinex is licensed for non-commercial research and educational use only.
+# Commercial use requires prior written permission.
+# See LICENSE for details.
+
 _base_ = ['../_base_/default_runtime.py', '../_base_/datasets/exdark_yolo.py']
 load_from = 'https://download.openmmlab.com/mmdetection/v2.0/yolo/yolov3_d53_mstrain-608_273e_coco/yolov3_d53_mstrain-608_273e_coco_20210518_115020-a2c3acb8.pth'
 
