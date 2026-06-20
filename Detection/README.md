@@ -72,3 +72,7 @@ python tools/train.py configs/yolo/yolov3_Multinex_Exdark.py
 # Nano
 python tools/train.py configs/yolo/yolov3_MultinexNano_Exdark.py
 ```
+
+## License
+
+The detection code builds upon mmdetection by OpenMMlab, which is licensed under the Apache License 2.0.  The Multinex-specific backbones and configurations provided in this directory are covered by the PolyForm Noncommercial License 1.0.0, and commercial use of these parts requires a separate written agreement with Alexandru Brateanu.  Other files in this directory remain under their original licences; see `LICENSE` and `THIRD_PARTY_NOTICES.md` for details.
