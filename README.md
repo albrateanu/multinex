@@ -15,6 +15,7 @@
 </div>
 
 ### News
+- **20.06.2026:** Clarified repository licensing and commercial-use terms. Multinex is source-available for non-commercial research and educational use under PolyForm Noncommercial 1.0.0; commercial use requires separate written permission.
 - **25.04.2026**: Model weights for object detection on ExDark are now available for download. Read `Detection/README.md` for more details.
 - **14.04.2026 :** [Pre-print](https://arxiv.org/abs/2604.10359), [code](https://github.com/albrateanu/multinex/), and [paper page](https://albrateanu.github.io/Multinex/) for **Multinex** (accepted at CVPR 2026) are released!
 
