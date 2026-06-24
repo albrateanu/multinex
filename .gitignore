@@ -127,3 +127,11 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+basicsr/version.py
+sewer_samples/
+sewer_results/
+sewer_resultsv2/
+basicsr/version.py
+basicsr/version.py
+basicsr/models/losses/losses.py
+CL_002949+.png
