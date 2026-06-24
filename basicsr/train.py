@@ -1,3 +1,8 @@
+# Copyright (c) 2026 Alexandru Brateanu
+# Multinex is licensed for non-commercial research and educational use only.
+# Commercial use requires prior written permission.
+# See LICENSE for details.
+
 import argparse
 import datetime
 import logging
