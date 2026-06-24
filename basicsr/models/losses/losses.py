@@ -51,7 +51,7 @@ class HybridLoss(nn.Module):
             print('not using MSE Loss')
         
         if w_perc != 0:
-            self.perceptual_loss_model = VGGPerceptualLoss
+            self.perceptual_loss_model = VGGPerceptualLoss(device='cuda')
         else:
             print('not using Perc Loss')
 
